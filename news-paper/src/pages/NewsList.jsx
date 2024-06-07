@@ -23,6 +23,7 @@ export default function NewsListing() {
         setLoading(true);
         const res = await fetch(`/server/listing/get/${params.listingId}`);
         const data = await res.json();
+        console.log(data);
         if (data.success === false) {
           setError(true);
           setLoading(false);

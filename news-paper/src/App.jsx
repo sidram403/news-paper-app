@@ -7,6 +7,7 @@ import Profile from "./pages/Profile.jsx";
 import PrivateRoute from "./components/Privateroute.jsx";
 import CreateNewsListing from "./pages/CreateNewsListing.jsx";
 import NewsListing from "./pages/NewsList.jsx";
+import Dashboard from "./pages/Dashboard.jsx";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
 
         <Route element={<PrivateRoute/>}>
           <Route path="/profile" element={<Profile/>} />
+          <Route path="/dashboard" element={<Dashboard/>} />
           <Route path="/create-news" element={<CreateNewsListing/>} />
         </Route>
       </Routes>
