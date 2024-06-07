@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  margin: 0;
+  padding: 0;
+}
+.css-1puturl-MuiDivider-root::before, .css-1puturl-MuiDivider-root::after {
+  border-color: red !important;
+}
