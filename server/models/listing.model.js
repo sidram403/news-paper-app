@@ -14,6 +14,11 @@ const listingSchema = new mongoose.Schema(
       type: Array,
       required: true,
     },
+    allowNews:{
+      type: Boolean,
+      required: true,
+      default: false,
+    },
     userRef: {
       type: String,
       required: true,

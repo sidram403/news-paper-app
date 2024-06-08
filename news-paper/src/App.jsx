@@ -7,9 +7,14 @@ import Profile from "./pages/Profile.jsx";
 import PrivateRoute from "./components/Privateroute.jsx";
 import CreateNewsListing from "./pages/CreateNewsListing.jsx";
 import NewsListing from "./pages/NewsList.jsx";
-import Dashboard from "./pages/Dashboard.jsx";
+import AdminDashboard from "./pages/admin/Dashboard.jsx";
+import UserDashboard from "./pages/user/Dashboard.jsx";
+import { useSelector } from "react-redux";
+// import ProfileSection from "./pages/ProfileDemo.jsx";
 
 function App() {
+  const { currentUser } = useSelector((state) => state.user);
+
   return (
     <BrowserRouter>
       <Routes>
@@ -21,7 +26,9 @@ function App() {
 
         <Route element={<PrivateRoute/>}>
           <Route path="/profile" element={<Profile/>} />
-          <Route path="/dashboard" element={<Dashboard/>} />
+          {currentUser && currentUser.role==='admin' && <Route path="/dashboard"  element={ <AdminDashboard/>} />}
+          {currentUser && currentUser.role==='user' && <Route path="/dashboard"  element={ <UserDashboard/>} />}
+          
           <Route path="/create-news" element={<CreateNewsListing/>} />
         </Route>
       </Routes>

@@ -36,7 +36,7 @@ const Header = () => {
         <div className="flex items-center gap-4">
           <SearchIcon className="cursor-pointer" />
           
-          <Link to='/profile'>
+          <Link to='/dashboard'>
             {currentUser ? (
               <img
                 className='rounded-full h-7 w-7 object-cover'

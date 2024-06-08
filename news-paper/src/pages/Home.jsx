@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Advertisement from "../assets/aads.png";
 import { Divider } from "@mui/material";
 import ArticleImg from "../assets/Article.png";
@@ -129,11 +129,49 @@ const types = [
 
 const Home = () => {
   const [activeType, setActiveType] = useState(3);
+  const [newsListingsArray, setNewsListingsArray] = useState([])
 
   const handleTypeClick = (index, e) => {
     e.preventDefault();
     setActiveType(index);
   };
+
+  useEffect(() =>{
+    const fetchNewsDetails = async () => {
+      try {
+        const res = await fetch("/server/listing/getNewsListings");
+        const data = await res.json();
+        console.log(data);
+
+        const filteredData = data.filter(news => news.allowNews === true);
+        const newsData = filteredData.map(news => {
+          const date = new Date(news.createdAt);
+          const formattedDate = date.toLocaleString('en-IN', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+            timeZoneName: 'short'
+          });
+          return {
+            ...news,
+            published: formattedDate
+          };
+        });
+
+        setNewsListingsArray(newsData);
+        // setNewsListingsArray(filteredData);
+      console.log(newsData);
+
+
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    fetchNewsDetails();
+
+  },[])
 
   return (
     <div>
@@ -157,26 +195,26 @@ const Home = () => {
                   className="w-full h-auto md:h-[320px]"
                 />
               </div>
-              {articleData.map((item) => (
-                <div className="py-2 w-full cursor-pointer" key={item.id}>
+              {newsListingsArray.map((item) => (
+                <div className="py-2 w-full cursor-pointer" key={item._id}>
                   <h1 className="font-bold text-lg md:text-[25px]">
-                    {item.title}
+                    {item.user}
                   </h1>
                   <div className="flex flex-col md:flex-row gap-4 py-2">
                     <div className="md:w-[70%]">
                       <p className="font-semibold text-sm md:text-[16px]">
-                        {item.subtitle}
+                        {item.title}
                       </p>
                       <p className="text-sm md:text-[16px]">
                         Updated: {item.published}
                       </p>
                       <p className="font-normal text-sm md:text-[16px]">
-                        {item.description}
+                        {item.content}
                       </p>
                     </div>
                     <div className="md:w-[30%]">
                       <img
-                        src={item.img}
+                        src={item.imageUrls[0]}
                         alt="ArticleCoverImg"
                         className="w-full h-auto"
                       />

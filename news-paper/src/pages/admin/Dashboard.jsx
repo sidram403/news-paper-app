@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FaSearch, FaShareAlt, FaBars } from "react-icons/fa";
-import Sidebar from "../components/Sidebar";
+import Sidebar from "../../components/Sidebar";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -122,7 +122,7 @@ const Dashboard = () => {
               {news.title}
             </div>
             <div className="text-black mb-2">{news.content}</div>
-            <div className="text-gray-500 mb-4">{news.useRef}</div>
+            <div className="text-gray-500 mb-4">{news.user}</div>
             <div className="flex space-x-2">
             <button
                   className="bg-green-500 text-white py-1 px-3 rounded"
