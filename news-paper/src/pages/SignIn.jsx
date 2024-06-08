@@ -23,7 +23,7 @@ const SignIn = () => {
   
     try {
       dispatch(signInStart());
-      const res = await fetch("/server/auth/signin", {
+      const res = await fetch("https://news-paper-app.onrender.com/server/auth/signin", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

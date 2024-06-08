@@ -109,7 +109,7 @@ export default function CreateNewsListing() {
         return setError('Discount price must be lower than regular price');
       setLoading(true);
       setError(false);
-      const res = await fetch('/server/listing/create', {
+      const res = await fetch('https://news-paper-app.onrender.com/server/listing/create', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -21,7 +21,7 @@ export default function NewsListing() {
     const fetchListing = async () => {
       try {
         setLoading(true);
-        const res = await fetch(`/server/listing/get/${params.listingId}`);
+        const res = await fetch(`https://news-paper-app.onrender.com/server/listing/get/${params.listingId}`);
         const data = await res.json();
         console.log(data);
         if (data.success === false) {

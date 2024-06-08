@@ -139,7 +139,7 @@ const Home = () => {
   useEffect(() =>{
     const fetchNewsDetails = async () => {
       try {
-        const res = await fetch("/server/listing/getNewsListings");
+        const res = await fetch("https://news-paper-app.onrender.com/server/listing/getNewsListings");
         const data = await res.json();
         console.log(data);
 

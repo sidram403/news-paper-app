@@ -20,7 +20,7 @@ const EditUserModel = ({ userDetails, onUpdateUserDetails, onClose }) => {
     e.preventDefault();
     try {
       dispatch(updateUserStart());
-      const res = await fetch(`/server/user/update/${currentUser._id}`, {
+      const res = await fetch(`https://news-paper-app.onrender.com/server/user/update/${currentUser._id}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

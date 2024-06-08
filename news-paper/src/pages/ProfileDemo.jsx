@@ -37,7 +37,7 @@ const ProfileSection = () => {
   const handleDeleteUser = async () => {
     try {
       dispatch(deleteUserStart());
-      const res = await fetch(`/server/user/delete/${currentUser._id}`, {
+      const res = await fetch(`https://news-paper-app.onrender.com/server/user/delete/${currentUser._id}`, {
         method: 'DELETE',
       });
       const data = await res.json();
@@ -54,7 +54,7 @@ const ProfileSection = () => {
   const handleSignOut = async () => {
     try {
       dispatch(signOutUserStart());
-      const res = await fetch('/server/auth/signout');
+      const res = await fetch('https://news-paper-app.onrender.com/server/auth/signout');
       const data = await res.json();
       if (data.success === false) {
         dispatch(deleteUserFailure(data.message));

@@ -22,7 +22,7 @@ const Dashboard = () => {
 
   const handleUpdateNewsStatus = async (id, allowNews) => {
     try {
-      const res = await fetch(`/server/listing/updateNewsStatus/${id}`, {
+      const res = await fetch(`https://news-paper-app.onrender.com/server/listing/updateNewsStatus/${id}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -43,26 +43,6 @@ const Dashboard = () => {
     } catch (error) {
       console.log(error.message);
       toast.error("An error occurred while updating news status");
-    }try {
-      const res = await fetch(`/server/listing/updateNewsStatus/${id}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ allowNews }),
-      });
-
-      if (res.ok) {
-        setNewsListingsArray((prev) =>
-          prev.map((news) =>
-            news._id === id ? { ...news, allowNews } : news
-          )
-        );
-      } else {
-        console.log("Failed to update news status");
-      }
-    } catch (error) {
-      console.log(error.message);
     }
   };
 
@@ -70,7 +50,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchNewsDetails = async () => {
       try {
-        const res = await fetch("/server/listing/getNewsListings");
+        const res = await fetch("https://news-paper-app.onrender.com/server/listing/getNewsListings");
         const data = await res.json();
         console.log(data);
 
