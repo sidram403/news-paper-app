@@ -124,7 +124,7 @@ export default function CreateNewsListing() {
       if (data.success === false) {
         setError(data.message);
       }
-      navigate(`/news-listing/${data._id}`);
+      navigate(`/`);
     } catch (error) {
       setError(error.message);
       setLoading(false);

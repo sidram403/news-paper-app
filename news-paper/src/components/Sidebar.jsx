@@ -25,14 +25,16 @@ const Sidebar = () => {
   return (
     <div className="w-76 bg-[#F44336] text-white">
       <div className="p-6 text-center">
-        <div>
-          <img src={Logo} className=" p-2 bg-white h-20 w-52" alt="Logo" />
+        <div className="cursor-pointer">
+          <Link to={'/'}>
+          <img src={Logo} className="cursor-pointer p-2 bg-white h-20 w-52" alt="Logo" />
+          </Link>
         </div>
       </div>
       <nav className="mt-6">
         <ul className="space-y-2">
           {[
-            { icon: <GoHome className="w-6 h-6 mr-2 font-bold" />, text: "Dashboard", link: "/" },
+            { icon: <GoHome className="w-6 h-6 mr-2 font-bold" />, text: "Dashboard", link: "/dashboard" },
             { icon: <CiUser className="w-6 h-6 mr-2 font-bold" />, text: "Profile", link: "/profile" },
             { icon: <RiArticleFill className="w-6 h-6 mr-2 font-bold" />, text: "My Article", link: "/roster" },
             { icon: <VscGraphLine className="w-6 h-6 mr-2 font-bold" />, text: "Analytics", link: "/report" },
